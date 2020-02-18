@@ -7,7 +7,9 @@ _**Why Redis?**_
 Redis is basically used for cache management. It reduces the client workload and speeds up the application.
 
 _Let's discuss a scenario where Redis could be helpful._
+
 **1) Calling an External Application API**
+
 Your microservice is calling other application’s API in order to get some data. The call is made often, the data in response is huge, and you know the response data is not going to change often in the other application. In our case, we are calling one API and we get the response in 10000 to 15000 ms. It is not good for any application to wait for such a long time to get the response. In that case, Redis is helpful.
 
 ![alt text](https://github.com/eshanwp/spring-data-redis/blob/master/img/1.jpg)
@@ -16,7 +18,13 @@ We can cache the response in Redis with an expiration time so instead of the act
 
 ![alt text](https://github.com/eshanwp/spring-data-redis/blob/master/img/2.jpg)
 
+**2) Frequently Querying the Reference Table or Master Table in the Database**
+
+Another scenario is when you have a table in your database, and that table contains reference data that is not going to change frequently. You query that table often to get the data and populate the UI. In this scenario, you can also use Redis. Instead of querying the database each time from the disk, you can cache the table in Redis with an expiration time so the load time of your UI will be faster.
+
+![alt text](https://github.com/eshanwp/spring-data-redis/blob/master/img/3.jpg)
+
 Following technologies being used
-    * spring-data-redis
-    * jedis
+* spring-data-redis
+* jedis
 
